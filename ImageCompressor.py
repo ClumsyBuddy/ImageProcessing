@@ -11,6 +11,7 @@ os.system(f'mode con: cols={cols} lines={lines}')
 path = "./"#sys.argv[1]
 
 basewidth = 0
+Resizename = ""
 print("Change Size? y or n")
 a = input()
 if a == 'y':
@@ -41,4 +42,5 @@ for img_name in img_list:
         wpercent = (basewidth/float(im.size[0]))
         hsize = int((float(im.size[1])*float(wpercent)))
         im = im.resize((basewidth, hsize), Image.ANTIALIAS)
-    im.save(name[0]+"-Compressed."+name[1], quality=quality, optimize=True)
+        Resizename = f"-{basewidth}x"
+    im.save(name[0]+"-Compressed"+Resizename+"."+name[1], quality=quality, optimize=True)
