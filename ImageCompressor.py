@@ -10,12 +10,12 @@ os.system(f'mode con: cols={cols} lines={lines}')
 #folder-name
 path = "./"#sys.argv[1]
 
-size = 0
+basewidth = 0
 print("Change Size? y or n")
 a = input()
 if a == 'y':
     print("Input a number: ")
-    size = int(input())
+    basewidth = int(input())
 print("Quality: ")
 quality = input()
 
@@ -37,6 +37,8 @@ for img_name in img_list:
         print("Periods cannot be in the name")
         sys.exit(0)
     im = Image.open(path+img_name)
-    if size > 0:
-        im = im.resize((size, size), Image.ANTIALIAS)
+    if basewidth > 0:
+        wpercent = (basewidth/float(im.size[0]))
+        hsize = int((float(im.size[1])*float(wpercent)))
+        im = im.resize((basewidth, hsize), Image.ANTIALIAS)
     im.save(name[0]+"-Compressed."+name[1], quality=quality, optimize=True)
