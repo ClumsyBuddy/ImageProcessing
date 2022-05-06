@@ -18,7 +18,7 @@ if int(quality) < 0 or int(quality) > 100:
 img_list = []
 for img_name in glob(path+'/*'):
     # one can use more image types(bmp,tiff,gif)
-    if img_name.endswith(".jpg") or img_name.endswith(".png") or img_name.endswith(".jpeg") or img_name.endswith(".PNG"):
+    if img_name.endswith(".jpg") or img_name.endswith(".png") or img_name.endswith(".jpeg") or img_name.endswith(".PNG") or img_name.endswith(".jfif"):
         # extract images name(image_name.[jpg|png]) from the full path
         img_list.append(img_name.split('\\')[-1])
 
