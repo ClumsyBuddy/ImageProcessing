@@ -46,9 +46,9 @@ for img_name in img_list:
         print("Periods cannot be in the name")
         sys.exit(0)
     im = Image.open("./"+MainDir+"/"+WEBPDir+"/"+img_name)
-    size = basewidth, basewidth
-    new_im = Image.new('RGB', size, (255, 255, 255))
     if basewidth > 0:
+        size = basewidth, basewidth
+        new_im = Image.new('RGB', size, (255, 255, 255))
         #wpercent = (basewidth/float(im.size[0]))
         #hsize = int((float(im.size[1])*float(wpercent)))
         
@@ -60,5 +60,7 @@ for img_name in img_list:
         
         #im = im.resize((basewidth, basewidth), Image.Resampling.LANCZOS)
         Resizename = f"-{basewidth}x"
+        new_im.save("./"+MainDir+"/"+CompressedDir+"/"+name[0]+"-Compressed"+Resizename+"."+name[1], quality=quality, optimize=True)
+        continue
     #im = remove_transparency(im, (0,0,0))
-    new_im.save("./"+MainDir+"/"+CompressedDir+"/"+name[0]+"-Compressed"+Resizename+"."+name[1], quality=quality, optimize=True)
+    im.save("./"+MainDir+"/"+CompressedDir+"/"+name[0]+"-Compressed"+"."+name[1], quality=quality, optimize=True)
